@@ -30,13 +30,7 @@ func CountBitsUint64(x uint64) int {
   return int((x * h01) >> 56)    //returns left 8 bits of x + (x<<8) + (x<<16) + (x<<24) + ...
 }
 
-func CountBitsUint64NoMUL(x uint64) int {
-  c0 := uint32(x) - ((uint32(x) >> 1) & 033333333333) - ((uint32(x) >> 2) & 011111111111)
-  c1 := uint32(x>>32) - (uint32(x>>33) & 033333333333) - (uint32(x>>34) & 011111111111)
-  return int((c0+(c0>>3))&030707070707)%63 + int((c1+(c1>>3))&030707070707)%63
-}
-
 func CountBitsByte(x byte) int {
-  c := uint32(x) - ((uint32(x) >> 1) & 033333333333) - ((uint32(x) >> 2) & 011111111111)
-  return int((c+(c>>3))&030707070707) % 63
+  c := x - ((x >> 1) & 0333) - ((x >> 2) & 0111)
+  return int((c+(c>>3))&0307) % 63
 }

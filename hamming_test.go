@@ -65,30 +65,10 @@ func TestCountBitUint64(t *testing.T) {
   }
 }
 
-func TestCountOnesUint64NoMUL(t *testing.T) {
-  for _, c := range testCountBitsUint64Cases {
-    if actualN := CountBitsUint64NoMUL(c.x); actualN != c.n {
-      t.Fatal("CountBitsUint64NoMUL(", c.x, ") = ", actualN, "  != ", c.n)
-    } else {
-      t.Log("CountBitsUint64NoMUL(", c.x, ") == ", c.n)
-    }
-  }
-}
 func BenchmarkCountBitsUint64(b *testing.B) {
   j := 0
   for i := 0; i < b.N; i++ {
     CountBitsUint64(testCountBitsUint64Cases[j].x)
-    j++
-    if j == len(testCountBitsUint64Cases) {
-      j = 0
-    }
-  }
-}
-
-func BenchmarkCountBitsUint64NoMUL(b *testing.B) {
-  j := 0
-  for i := 0; i < b.N; i++ {
-    CountBitsUint64NoMUL(testCountBitsUint64Cases[j].x)
     j++
     if j == len(testCountBitsUint64Cases) {
       j = 0
