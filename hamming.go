@@ -1,6 +1,6 @@
 package hamming
 
-// TODO: SSE4.x PopCnt
+// SSE4.x PopCnt is 10x slower
 // References: check out Hacker's Delight
 
 const (
