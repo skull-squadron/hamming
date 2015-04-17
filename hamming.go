@@ -21,6 +21,15 @@ func Uint64(x, y uint64) int {
 	return CountBitsUint64(x ^ y)
 }
 
+// hamming distance of two uint64 buffers, of which the size of the first argument is used for both (panics if b1 is smaller than b0, does not compare b1 beyond length of b0)
+func Uint64s(b0, b1 []uint64) int {
+	d := 0
+	for i, x := range b0 {
+		d += Uint64(x, b1[i])
+	}
+	return d
+}
+
 // hamming distance of two bytes
 func Byte(x, y byte) int {
 	return CountBitsByte(x ^ y)

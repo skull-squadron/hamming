@@ -19,6 +19,11 @@ type testBytesCase struct {
 	n      int
 }
 
+type testUint64sCase struct {
+	b0, b1 []uint64
+	n      int
+}
+
 var testCountBitsByteCases = []testCountBitsByteCase{
 	{0x00, 0},
 	{0x01, 1},
@@ -58,6 +63,14 @@ var testBytesCases = []testBytesCase{
 	{[]byte{1, 0}, []byte{0, 1}, 2},
 }
 
+var testUint64sCases = []testUint64sCase{
+	{[]uint64{}, []uint64{}, 0},
+	{[]uint64{1}, []uint64{0}, 1},
+	{[]uint64{1}, []uint64{2}, 2},
+	{[]uint64{1, 0}, []uint64{0, 1}, 2},
+	{[]uint64{1, 0}, []uint64{0, 1}, 2},
+}
+
 func TestCountBitByte(t *testing.T) {
 	for _, c := range testCountBitsByteCases {
 		if actualN := CountBitsByte(c.x); actualN != c.n {
@@ -74,6 +87,16 @@ func TestBytes(t *testing.T) {
 			t.Fatal("Bytes(", c.b0, ",", c.b1, ") = ", actualN, "  != ", c.n)
 		} else {
 			t.Log("Bytes(", c.b0, ",", c.b1, ") == ", c.n)
+		}
+	}
+}
+
+func TestUint64s(t *testing.T) {
+	for _, c := range testUint64sCases {
+		if actualN := Uint64s(c.b0, c.b1); actualN != c.n {
+			t.Fatal("Uint64s(", c.b0, ",", c.b1, ") = ", actualN, "  != ", c.n)
+		} else {
+			t.Log("Uint64s(", c.b0, ",", c.b1, ") == ", c.n)
 		}
 	}
 }
