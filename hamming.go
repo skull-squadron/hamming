@@ -26,6 +26,15 @@ func Byte(x, y byte) int {
 	return CountBitsByte(x ^ y)
 }
 
+// hamming distance of two byte buffers, of which the size of the first argument is used for both (panics if b1 is smaller than b0, does not compare b1 beyond length of b0)
+func Bytes(b0, b1 []byte) int {
+	d := 0
+	for i, x := range b0 {
+		d += Byte(x, b1[i])
+	}
+	return d
+}
+
 func CountBitsUint64(x uint64) int {
 	x -= (x >> 1) & m1             // put count of each 2 bits into those 2 bits
 	x = (x & m2) + ((x >> 2) & m2) // put count of each 4 bits into those 4 bits
