@@ -10,7 +10,7 @@
 //
 // Usage
 //
-// There functions `(CountBits|)(Byte|Uint64)(s|)`, the plural forms are for for slices.
+// The functions are named (CountBits)?(Byte|Uint64)s?.  The plural forms are for slices.  The CountBits.+ forms are Population Count only, where the bare-type forms are Hamming distance.
 //
 //    import 'github.com/steakknife/hamming'
 //
