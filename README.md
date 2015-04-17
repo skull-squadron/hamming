@@ -1,3 +1,3 @@
-Copyright (c) 2014, 2015 Barry Allard
+Copyright © 2014, 2015 Barry Allard
 
-MIT license
+[MIT license](MIT-LICENSE.txt)

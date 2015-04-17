@@ -1,3 +1,9 @@
+/*
+ * Copyright © 2014, 2015 Barry Allard
+ *
+ * MIT license
+ *
+ */
 package hamming
 
 // SSE4.x PopCnt is 10x slower
