@@ -1,12 +1,12 @@
-/*
- * hamming distance calculations in Go
- *
- * https://github.com/steakknife/hamming
- *
- * Copyright © 2014, 2015 Barry Allard
- *
- * MIT license
- */
+//
+// hamming distance calculations in Go
+//
+// https://github.com/steakknife/hamming
+//
+// Copyright © 2014, 2015 Barry Allard
+//
+// MIT license
+//
 package hamming
 
 import (

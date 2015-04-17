@@ -19,6 +19,8 @@ hamming.Byte(0x00, 0x00) // 0
 hamming.CountBitsByte(0xA5), // 4
 ```
 
+See help in the [docs](https://godoc.org/github.com/steakknife/hamming)
+
 ## Get
 
     go get -u github.com/steakknife/hamming  # master is always stable

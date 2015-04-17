@@ -1,12 +1,28 @@
-/*
- * hamming distance calculations in Go
- *
- * https://github.com/steakknife/hamming
- *
- * Copyright © 2014, 2015 Barry Allard
- *
- * MIT license
- */
+//
+// hamming distance calculations in Go
+//
+// https://github.com/steakknife/hamming
+//
+// Copyright © 2014, 2015 Barry Allard
+//
+// MIT license
+//
+//
+// Usage
+//
+// There functions `(CountBits|)(Byte|Uint64)(s|)`, the plural forms are for for slices.
+//
+//    import 'github.com/steakknife/hamming'
+//
+//    // ...
+//
+//    // hamming distance between values
+//    hamming.Byte(0xFF, 0x00) // 8
+//    hamming.Byte(0x00, 0x00) // 0
+//
+//    // just count bits in a byte
+//    hamming.CountBitsByte(0xA5), // 4
+//
 package hamming
 
 // SSE4.x PopCnt is 10x slower
