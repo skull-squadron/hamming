@@ -1,3 +1,3 @@
-Copyright (c) 2014 Barry Allard
+Copyright (c) 2014, 2015 Barry Allard
 
 MIT license
