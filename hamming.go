@@ -51,6 +51,22 @@ func CountBitsUint64(x uint64) int {
 	return int((x * h01) >> 56)    // returns left 8 bits of x + (x<<8) + (x<<16) + (x<<24) + ...
 }
 
+func CountBitsUint64s(b []uint64) int {
+	c := 0
+	for _, x := range b {
+		c += CountBitsUint64(x)
+	}
+	return c
+}
+
 func CountBitsByte(x byte) int {
 	return int(table[x])
+}
+
+func CountBitsBytes(b []byte) int {
+	c := 0
+	for _, x := range b {
+		c += CountBitsByte(x)
+	}
+	return c
 }
