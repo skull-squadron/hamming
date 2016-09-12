@@ -1,6 +1,6 @@
 # hamming distance calculations in Go
 
-Copyright © 2014, 2015 Barry Allard
+Copyright © 2014, 2015, 2016 Barry Allard
 
 [MIT license](MIT-LICENSE.txt)
 
@@ -41,4 +41,4 @@ See help in the [docs](https://godoc.org/github.com/steakknife/hamming)
 
 [MIT license](MIT-LICENSE.txt)
 
-Copyright © 2014, 2015 Barry Allard
+Copyright © 2014, 2015, 2016 Barry Allard
