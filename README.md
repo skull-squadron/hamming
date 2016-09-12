@@ -1,3 +1,6 @@
+[![GoDoc](https://godoc.org/github.com/steakknife/hamming?status.png)](https://godoc.org/github.com/steakknife/hamming)
+
+
 # hamming distance calculations in Go
 
 Copyright © 2014, 2015, 2016 Barry Allard
