@@ -13,43 +13,12 @@ import (
 	"math"
 	"strconv"
 	"testing"
-	"time"
 )
 
 const (
 	maxInt  = (1 << (strconv.IntSize - 1)) - 1
 	maxUint = (1 << strconv.IntSize) - 1
 )
-
-type testCountCase struct {
-	x uint64
-	n int
-}
-
-var testCountBitsCases = []testCountCase{
-	{0x00, 0},
-	{0x01, 1},
-	{0x02, 1},
-	{0x03, 2},
-	{0x77, 6},
-	{0xaa, 4},
-	{0x55, 4},
-	{0x7f, 7},
-	{0xff, 8},
-	{0x100, 1},
-	{0x101, 2},
-	{0xffff, 16},
-	{0x10000, 1},
-	{0x10001, 2},
-	{0xffffffff, 32},
-	{0x1ffffffff, 33},
-	{0x3ffffffff, 34},
-	{0x7ffffffff, 35},
-	{0xfffffffff, 36},
-	{0x3fffffffffffffff, 62},
-	{0x7fffffffffffffff, 63},
-	{0xffffffffffffffff, 64},
-}
 
 func TestCountBitInt8(t *testing.T) {
 	for _, c := range testCountBitsCases {
@@ -190,83 +159,132 @@ func TestCountBitRune(t *testing.T) {
 
 // ============== benchmarks ==============
 
-var y int = 2
-
 func BenchmarkCountBitsInt8(b *testing.B) {
+	z := 0
+
 	for i := 0; i < b.N; i++ {
-		y += CountBitsInt8(int8(i))
+		z += CountBitsInt8(int8(i))
 	}
+
+	writeToTempFile(z)
 }
 
 func BenchmarkCountBitsInt16(b *testing.B) {
+	z := 0
+
 	for i := 0; i < b.N; i++ {
-		y += CountBitsInt16(int16(i))
+		z += CountBitsInt16(int16(i))
 	}
+
+	writeToTempFile(z)
 }
 
 func BenchmarkCountBitsInt32(b *testing.B) {
+	z := 0
+
 	for i := 0; i < b.N; i++ {
-		y += CountBitsInt32(int32(i))
+		z += CountBitsInt32(int32(i))
 	}
+
+	writeToTempFile(z)
 }
 
 func BenchmarkCountBitsInt64(b *testing.B) {
+	z := 0
+
 	for i := 0; i < b.N; i++ {
-		y += CountBitsInt64(int64(i))
+		z += CountBitsInt64(int64(i))
 	}
+
+	writeToTempFile(z)
 }
 
 func BenchmarkCountBitsInt(b *testing.B) {
+	z := 0
+
 	for i := 0; i < b.N; i++ {
-		y += CountBitsInt(int(i))
+		z += CountBitsInt(int(i))
 	}
+
+	writeToTempFile(z)
 }
 
 func BenchmarkCountBitsUint16(b *testing.B) {
+	z := 0
+
 	for i := 0; i < b.N; i++ {
-		y += CountBitsUint16(uint16(i))
+		z += CountBitsUint16(uint16(i))
 	}
+
+	writeToTempFile(z)
 }
 
 func BenchmarkCountBitsUint32(b *testing.B) {
+	z := 0
+
 	for i := 0; i < b.N; i++ {
-		y += CountBitsUint32(uint32(i))
+		z += CountBitsUint32(uint32(i))
 	}
+
+	writeToTempFile(z)
 }
 
 func BenchmarkCountBitsUint64(b *testing.B) {
+	z := 0
+
 	for i := 0; i < b.N; i++ {
-		y += CountBitsUint64(uint64(i))
+		z += CountBitsUint64(uint64(i))
 	}
+
+	writeToTempFile(z)
+}
+
+func BenchmarkCountBitsUint64Alt(b *testing.B) {
+	z := 0
+
+	for i := 0; i < b.N; i++ {
+		z += CountBitsUint64Alt(uint64(i))
+	}
+
+	writeToTempFile(z)
 }
 
 func BenchmarkCountBitsUint(b *testing.B) {
+	z := 0
+
 	for i := 0; i < b.N; i++ {
-		y += CountBitsUint(uint(i))
+		z += CountBitsUint(uint(i))
 	}
+
+	writeToTempFile(z)
 }
 
 func BenchmarkCountBitsByte(b *testing.B) {
+	z := 0
+
 	for i := 0; i < b.N; i++ {
-		y += CountBitsByte(byte(i))
+		z += CountBitsByte(byte(i))
 	}
+
+	writeToTempFile(z)
 }
 
 func BenchmarkCountBitsByteAlt(b *testing.B) {
+	z := 0
+
 	for i := 0; i < b.N; i++ {
-		y += CountBitsByteAlt(byte(i))
+		z += CountBitsByteAlt(byte(i))
 	}
+
+	writeToTempFile(z)
 }
 
 func BenchmarkCountBitsRune(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		y += CountBitsRune(rune(i))
-	}
-}
+	z := 0
 
-func BenchmarkDone(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		time.Sleep(1 * time.Second)
+		z += CountBitsRune(rune(i))
 	}
-	b.Logf("print to prevent dead-code elimination %d", y)
+
+	writeToTempFile(z)
 }

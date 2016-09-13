@@ -8,49 +8,57 @@
 // MIT license
 //
 
-// BUG/TODO: doesnt check CPUID feature bits
-
 #include "textflag.h"
-TEXT ·PopCntInt8(SB),NOSPLIT,$0
-	JMP        ·PopCntByte(SB)
 
-TEXT ·PopCntInt16(SB),NOSPLIT,$0
-	JMP        ·PopCntUint16(SB)
+TEXT ·popCntInt8(SB),NOSPLIT,$0
+	JMP        ·popCntByte(SB)
 
-TEXT ·PopCntInt32(SB),NOSPLIT,$0
-	JMP        ·PopCntUint32(SB)
+TEXT ·popCntInt16(SB),NOSPLIT,$0
+	JMP        ·popCntUint16(SB)
 
-TEXT ·PopCntInt64(SB),NOSPLIT,$0
-	JMP        ·PopCntUint64(SB)
+TEXT ·popCntInt32(SB),NOSPLIT,$0
+	JMP        ·popCntUint32(SB)
 
-TEXT ·PopCntByte(SB),NOSPLIT,$0
-	JMP        ·PopCntUint8(SB)
+TEXT ·popCntInt64(SB),NOSPLIT,$0
+	JMP        ·popCntUint64(SB)
 
-TEXT ·PopCntRune(SB),NOSPLIT,$0
-	JMP        ·PopCntUint32(SB)
+TEXT ·popCntByte(SB),NOSPLIT,$0
+	JMP        ·popCntUint8(SB)
 
-TEXT ·PopCntUint8(SB),NOSPLIT,$0
+TEXT ·popCntRune(SB),NOSPLIT,$0
+	JMP        ·popCntUint32(SB)
+
+TEXT ·popCntUint8(SB),NOSPLIT,$0
 	XORQ       AX, AX
 	MOVB       x+0(FP), AX
 	POPCNTQ    AX, AX	
-	MOVL       AX, ret+8(FP)
+	MOVQ       AX, ret+8(FP)
 	RET
 
-TEXT ·PopCntUint16(SB),NOSPLIT,$0
+TEXT ·popCntUint16(SB),NOSPLIT,$0
 	XORQ       AX, AX
 	MOVW       x+0(FP), AX
 	POPCNTQ    AX, AX	
-	MOVL       AX, ret+8(FP)
+	MOVQ       AX, ret+8(FP)
 	RET
 
-TEXT ·PopCntUint32(SB),NOSPLIT,$0
+TEXT ·popCntUint32(SB),NOSPLIT,$0
 	XORQ       AX, AX
 	MOVL       x+0(FP), AX
 	POPCNTQ    AX, AX	
-	MOVL       AX, ret+8(FP)
+	MOVQ       AX, ret+8(FP)
 	RET
 
-TEXT ·PopCntUint64(SB),NOSPLIT,$0
+TEXT ·popCntUint64(SB),NOSPLIT,$0
 	POPCNTQ    x+0(FP), AX
-	MOVL       AX, ret+8(FP)
+	MOVQ       AX, ret+8(FP)
+	RET
+
+// func hasPopCnt() (ret bool) 
+TEXT ·hasPopCnt(SB),NOSPLIT,$0
+	MOVL       $1, AX
+	CPUID
+	SHRL       $23, CX  // bit 23: Advanced Bit Manipulation Bit (ABM) -> POPCNTQ
+	ANDL       $1, CX
+	MOVB       CX, ret+0(FP)
 	RET

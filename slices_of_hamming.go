@@ -90,6 +90,15 @@ func Uint64s(b0, b1 []uint64) int {
 	return d
 }
 
+// hamming distance of two uint buffers, of which the size of the first argument is used for both (panics if b1 is smaller than b0, does not compare b1 beyond length of b0)
+func Uints(b0, b1 []uint) int {
+	d := 0
+	for i, x := range b0 {
+		d += Uint(x, b1[i])
+	}
+	return d
+}
+
 // hamming distance of two byte buffers, of which the size of the first argument is used for both (panics if b1 is smaller than b0, does not compare b1 beyond length of b0)
 func Bytes(b0, b1 []byte) int {
 	d := 0
@@ -113,6 +122,7 @@ func Strings(b0, b1 string) int {
 	return Runes(runes(b0), runes(b1))
 }
 
+// runize string
 func runes(s string) (r []rune) {
 	for _, ch := range s {
 		r = append(r, ch)
