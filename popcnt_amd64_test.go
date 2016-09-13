@@ -138,121 +138,73 @@ func TestPopCntRune(t *testing.T) {
 // ============== benchmarks ==============
 
 func BenchmarkPopCntInt8(b *testing.B) {
-	z := 0
-
 	for i := 0; i < b.N; i++ {
-		z += PopCntInt8(int8(i))
+		PopCntInt8(int8(i))
 	}
-
-	writeToTempFile(z)
 }
 
 func BenchmarkPopCntInt16(b *testing.B) {
-	z := 0
-
 	for i := 0; i < b.N; i++ {
-		z += PopCntInt16(int16(i))
+		PopCntInt16(int16(i))
 	}
-
-	writeToTempFile(z)
 }
 
 func BenchmarkPopCntInt32(b *testing.B) {
-	z := 0
-
 	for i := 0; i < b.N; i++ {
-		z += PopCntInt32(int32(i))
+		PopCntInt32(int32(i))
 	}
-
-	writeToTempFile(z)
 }
 
 func BenchmarkPopCntInt64(b *testing.B) {
-	z := 0
-
 	for i := 0; i < b.N; i++ {
-		z += PopCntInt64(int64(i))
+		PopCntInt64(int64(i))
 	}
-
-	writeToTempFile(z)
 }
 
 func BenchmarkPopCntInt(b *testing.B) {
-	z := 0
-
 	for i := 0; i < b.N; i++ {
-		z += PopCntInt(i)
+		PopCntInt(i)
 	}
-
-	writeToTempFile(z)
 }
 
 func BenchmarkPopCntUint8(b *testing.B) {
-	z := 0
-
 	for i := 0; i < b.N; i++ {
-		z += PopCntUint8(uint8(i))
+		PopCntUint8(uint8(i))
 	}
-
-	writeToTempFile(z)
 }
 
 func BenchmarkPopCntUint16(b *testing.B) {
-	z := 0
-
 	for i := 0; i < b.N; i++ {
-		z += PopCntUint16(uint16(i))
+		PopCntUint16(uint16(i))
 	}
-
-	writeToTempFile(z)
 }
 
 func BenchmarkPopCntUint32(b *testing.B) {
-	z := 0
-
 	for i := 0; i < b.N; i++ {
-		z += PopCntUint32(uint32(i))
+		PopCntUint32(uint32(i))
 	}
-
-	writeToTempFile(z)
 }
 
 func BenchmarkPopCntUint64(b *testing.B) {
-	z := 0
-
 	for i := 0; i < b.N; i++ {
-		z += PopCntUint64(uint64(i))
+		PopCntUint64(uint64(i))
 	}
-
-	writeToTempFile(z)
 }
 
 func BenchmarkPopCntUint(b *testing.B) {
-	z := 0
-
 	for i := 0; i < b.N; i++ {
-		z += PopCntUint(uint(i))
+		PopCntUint(uint(i))
 	}
-
-	writeToTempFile(z)
 }
 
 func BenchmarkPopCntByte(b *testing.B) {
-	z := 0
-
 	for i := 0; i < b.N; i++ {
-		z += PopCntByte(byte(i))
+		PopCntByte(byte(i))
 	}
-
-	writeToTempFile(z)
 }
 
 func BenchmarkPopCntRune(b *testing.B) {
-	z := 0
-
 	for i := 0; i < b.N; i++ {
-		z += PopCntRune(rune(i))
+		PopCntRune(rune(i))
 	}
-
-	writeToTempFile(z)
 }

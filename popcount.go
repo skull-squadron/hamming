@@ -11,7 +11,7 @@ package hamming
 
 import "strconv"
 
-// References: check out Hacker's Delight
+// References: check out Hacker's Delight, about p. 70
 
 var table = [256]uint8{
 	0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2, 3, 2, 3, 3, 4,
@@ -88,18 +88,22 @@ func CountBitsUint64Alt(x uint64) int {
 	return CountBitsUint32(uint32(x>>32)) + CountBitsUint32(uint32(x))
 }
 
-func CountBitsUint(x uint) int {
-	if strconv.IntSize == 64 {
-		return CountBitsUint64(uint64(x))
-	} else if strconv.IntSize == 32 {
-		return CountBitsUint32(uint32(x))
-	} else {
-		// panic("slow hamming.CountBitsUint() because IntSize is unusual")
-		c := 0
-		for x != 0 {
-			x &= x - 1
-			c++
-		}
-		return c
+func CountBitsUintReference(x uint) int {
+	c := 0
+	for x != 0 {
+		x &= x - 1
+		c++
 	}
+	return c
 }
+
+func CountBitsUint(x uint) int {
+	return CountBitsUint64(uint64(x))
+}
+
+var assertIntSizeNotMoreThan64Bits = func() interface{} {
+	if strconv.IntSize > 64 {
+		panic("CountBitsUint cannot function when IntSize > 64 bits")
+	}
+	return nil
+}()
