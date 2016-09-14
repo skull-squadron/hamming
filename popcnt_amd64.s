@@ -10,46 +10,46 @@
 
 #include "textflag.h"
 
-TEXT ·PopCntInt8(SB),NOSPLIT,$0
-	JMP        ·PopCntByte(SB)
+TEXT ·Int8PopCnt(SB),NOSPLIT,$0
+	JMP        ·BytePopCnt(SB)
 
-TEXT ·PopCntInt16(SB),NOSPLIT,$0
-	JMP        ·PopCntUint16(SB)
+TEXT ·Int16PopCnt(SB),NOSPLIT,$0
+	JMP        ·Uint16PopCnt(SB)
 
-TEXT ·PopCntInt32(SB),NOSPLIT,$0
-	JMP        ·PopCntUint32(SB)
+TEXT ·Int32PopCnt(SB),NOSPLIT,$0
+	JMP        ·Uint32PopCnt(SB)
 
-TEXT ·PopCntInt64(SB),NOSPLIT,$0
-	JMP        ·PopCntUint64(SB)
+TEXT ·Int64PopCnt(SB),NOSPLIT,$0
+	JMP        ·Uint64PopCnt(SB)
 
-TEXT ·PopCntByte(SB),NOSPLIT,$0
-	JMP        ·PopCntUint8(SB)
+TEXT ·BytePopCnt(SB),NOSPLIT,$0
+	JMP        ·Uint8PopCnt(SB)
 
-TEXT ·PopCntRune(SB),NOSPLIT,$0
-	JMP        ·PopCntUint32(SB)
+TEXT ·RunePopCnt(SB),NOSPLIT,$0
+	JMP        ·Uint32PopCnt(SB)
 
-TEXT ·PopCntUint8(SB),NOSPLIT,$0
+TEXT ·Uint8PopCnt(SB),NOSPLIT,$0
 	XORQ       AX, AX
 	MOVB       x+0(FP), AX
 	POPCNTQ    AX, AX	
 	MOVQ       AX, ret+8(FP)
 	RET
 
-TEXT ·PopCntUint16(SB),NOSPLIT,$0
+TEXT ·Uint16PopCnt(SB),NOSPLIT,$0
 	XORQ       AX, AX
 	MOVW       x+0(FP), AX
 	POPCNTQ    AX, AX	
 	MOVQ       AX, ret+8(FP)
 	RET
 
-TEXT ·PopCntUint32(SB),NOSPLIT,$0
+TEXT ·Uint32PopCnt(SB),NOSPLIT,$0
 	XORQ       AX, AX
 	MOVL       x+0(FP), AX
 	POPCNTQ    AX, AX	
 	MOVQ       AX, ret+8(FP)
 	RET
 
-TEXT ·PopCntUint64(SB),NOSPLIT,$0
+TEXT ·Uint64PopCnt(SB),NOSPLIT,$0
 	POPCNTQ    x+0(FP), AX
 	MOVQ       AX, ret+8(FP)
 	RET

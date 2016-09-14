@@ -11,18 +11,18 @@ Copyright © 2014, 2015, 2016 Barry Allard
 
 ```
 $ go test -bench=.
-BenchmarkPopCntInt8-4               	500000000	         3.97 ns/op
-BenchmarkPopCntInt16-4              	500000000	         3.22 ns/op
-BenchmarkPopCntInt32-4              	500000000	         3.33 ns/op
-BenchmarkPopCntInt64-4              	500000000	         3.36 ns/op
-BenchmarkPopCntInt-4                	300000000	         5.67 ns/op
-BenchmarkPopCntUint8-4              	1000000000	         2.78 ns/op
-BenchmarkPopCntUint16-4             	1000000000	         2.82 ns/op
-BenchmarkPopCntUint32-4             	1000000000	         2.67 ns/op
-BenchmarkPopCntUint64-4             	1000000000	         2.68 ns/op
-BenchmarkPopCntUint-4               	300000000	         4.87 ns/op
-BenchmarkPopCntByte-4               	500000000	         4.07 ns/op
-BenchmarkPopCntRune-4               	500000000	         3.69 ns/op
+BenchmarkInt8PopCnt-4               	500000000	         3.97 ns/op
+BenchmarkInt16PopCnt-4              	500000000	         3.22 ns/op
+BenchmarkInt32PopCnt-4              	500000000	         3.33 ns/op
+BenchmarkInt64PopCnt-4              	500000000	         3.36 ns/op
+BenchmarkIntPopCnt-4                	300000000	         5.67 ns/op
+BenchmarkUint8PopCnt-4              	1000000000	         2.78 ns/op
+BenchmarkUint16PopCnt-4             	1000000000	         2.82 ns/op
+BenchmarkUint32PopCnt-4             	1000000000	         2.67 ns/op
+BenchmarkUint64PopCnt-4             	1000000000	         2.68 ns/op
+BenchmarkUintPopCnt-4               	300000000	         4.87 ns/op
+BenchmarkBytePopCnt-4               	500000000	         4.07 ns/op
+BenchmarkRunePopCnt-4               	500000000	         3.69 ns/op
 BenchmarkCountBitsInt8-4            	2000000000	         0.41 ns/op
 BenchmarkCountBitsInt16-4           	2000000000	         0.40 ns/op
 BenchmarkCountBitsInt32-4           	2000000000	         0.38 ns/op

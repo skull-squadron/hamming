@@ -17,7 +17,7 @@ import (
 	"testing"
 )
 
-func TestPopCntInt8(t *testing.T) {
+func TestInt8PopCnt(t *testing.T) {
 	if !HasPopCnt() {
 		t.SkipNow()
 	}
@@ -25,13 +25,13 @@ func TestPopCntInt8(t *testing.T) {
 		if c.x > math.MaxInt8 {
 			continue
 		}
-		if actualN := PopCntInt8(int8(c.x)); actualN != c.n {
+		if actualN := Int8PopCnt(int8(c.x)); actualN != c.n {
 			t.Fatalf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
 		}
 	}
 }
 
-func TestPopCntInt16(t *testing.T) {
+func TestInt16PopCnt(t *testing.T) {
 	if !HasPopCnt() {
 		t.SkipNow()
 	}
@@ -39,13 +39,13 @@ func TestPopCntInt16(t *testing.T) {
 		if c.x > math.MaxInt16 {
 			continue
 		}
-		if actualN := PopCntInt16(int16(c.x)); actualN != c.n {
+		if actualN := Int16PopCnt(int16(c.x)); actualN != c.n {
 			t.Fatalf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
 		}
 	}
 }
 
-func TestPopCntInt32(t *testing.T) {
+func TestInt32PopCnt(t *testing.T) {
 	if !HasPopCnt() {
 		t.SkipNow()
 	}
@@ -53,13 +53,13 @@ func TestPopCntInt32(t *testing.T) {
 		if c.x > math.MaxInt32 {
 			continue
 		}
-		if actualN := PopCntInt32(int32(c.x)); actualN != c.n {
+		if actualN := Int32PopCnt(int32(c.x)); actualN != c.n {
 			t.Fatalf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
 		}
 	}
 }
 
-func TestPopCntInt64(t *testing.T) {
+func TestInt64PopCnt(t *testing.T) {
 	if !HasPopCnt() {
 		t.SkipNow()
 	}
@@ -67,13 +67,13 @@ func TestPopCntInt64(t *testing.T) {
 		if c.x > math.MaxInt64 {
 			continue
 		}
-		if actualN := PopCntInt64(int64(c.x)); actualN != c.n {
+		if actualN := Int64PopCnt(int64(c.x)); actualN != c.n {
 			t.Fatalf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
 		}
 	}
 }
 
-func TestPopCntInt(t *testing.T) {
+func TestIntPopCnt(t *testing.T) {
 	if !HasPopCnt() {
 		t.SkipNow()
 	}
@@ -81,13 +81,13 @@ func TestPopCntInt(t *testing.T) {
 		if c.x > maxInt {
 			continue
 		}
-		if actualN := PopCntInt(int(c.x)); actualN != c.n {
+		if actualN := IntPopCnt(int(c.x)); actualN != c.n {
 			t.Fatalf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
 		}
 	}
 }
 
-func TestPopCntUint8(t *testing.T) {
+func TestUint8PopCnt(t *testing.T) {
 	if !HasPopCnt() {
 		t.SkipNow()
 	}
@@ -95,13 +95,13 @@ func TestPopCntUint8(t *testing.T) {
 		if c.x > math.MaxUint8 {
 			continue
 		}
-		if actualN := PopCntUint8(uint8(c.x)); actualN != c.n {
+		if actualN := Uint8PopCnt(uint8(c.x)); actualN != c.n {
 			t.Fatalf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
 		}
 	}
 }
 
-func TestPopCntUint16(t *testing.T) {
+func TestUint16PopCnt(t *testing.T) {
 	if !HasPopCnt() {
 		t.SkipNow()
 	}
@@ -109,13 +109,13 @@ func TestPopCntUint16(t *testing.T) {
 		if c.x > math.MaxUint16 {
 			continue
 		}
-		if actualN := PopCntUint16(uint16(c.x)); actualN != c.n {
+		if actualN := Uint16PopCnt(uint16(c.x)); actualN != c.n {
 			t.Fatalf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
 		}
 	}
 }
 
-func TestPopCntUint32(t *testing.T) {
+func TestUint32PopCnt(t *testing.T) {
 	if !HasPopCnt() {
 		t.SkipNow()
 	}
@@ -123,13 +123,13 @@ func TestPopCntUint32(t *testing.T) {
 		if c.x > math.MaxUint32 {
 			continue
 		}
-		if actualN := PopCntUint32(uint32(c.x)); actualN != c.n {
+		if actualN := Uint32PopCnt(uint32(c.x)); actualN != c.n {
 			t.Fatalf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
 		}
 	}
 }
 
-func TestPopCntUint64(t *testing.T) {
+func TestUint64PopCnt(t *testing.T) {
 	if !HasPopCnt() {
 		t.SkipNow()
 	}
@@ -137,13 +137,13 @@ func TestPopCntUint64(t *testing.T) {
 		if c.x > math.MaxUint64 {
 			continue
 		}
-		if actualN := PopCntUint64(c.x); actualN != c.n {
+		if actualN := Uint64PopCnt(c.x); actualN != c.n {
 			t.Fatalf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
 		}
 	}
 }
 
-func TestPopCntByte(t *testing.T) {
+func TestBytePopCnt(t *testing.T) {
 	if !HasPopCnt() {
 		t.SkipNow()
 	}
@@ -151,13 +151,13 @@ func TestPopCntByte(t *testing.T) {
 		if c.x > math.MaxUint8 {
 			continue
 		}
-		if actualN := PopCntByte(byte(c.x)); actualN != c.n {
+		if actualN := BytePopCnt(byte(c.x)); actualN != c.n {
 			t.Fatalf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
 		}
 	}
 }
 
-func TestPopCntRune(t *testing.T) {
+func TestRunePopCnt(t *testing.T) {
 	if !HasPopCnt() {
 		t.SkipNow()
 	}
@@ -165,7 +165,7 @@ func TestPopCntRune(t *testing.T) {
 		if c.x > math.MaxInt32 {
 			continue
 		}
-		if actualN := PopCntRune(rune(c.x)); actualN != c.n {
+		if actualN := RunePopCnt(rune(c.x)); actualN != c.n {
 			t.Fatalf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
 		}
 	}
@@ -173,110 +173,110 @@ func TestPopCntRune(t *testing.T) {
 
 // ============== benchmarks ==============
 
-func BenchmarkPopCntInt8(b *testing.B) {
+func BenchmarkInt8PopCnt(b *testing.B) {
 	if !HasPopCnt() {
 		b.SkipNow()
 	}
 	for i := 0; i < b.N; i++ {
-		PopCntInt8(int8(i))
+		Int8PopCnt(int8(i))
 	}
 }
 
-func BenchmarkPopCntInt16(b *testing.B) {
+func BenchmarkInt16PopCnt(b *testing.B) {
 	if !HasPopCnt() {
 		b.SkipNow()
 	}
 	for i := 0; i < b.N; i++ {
-		PopCntInt16(int16(i))
+		Int16PopCnt(int16(i))
 	}
 }
 
-func BenchmarkPopCntInt32(b *testing.B) {
+func BenchmarkInt32PopCnt(b *testing.B) {
 	if !HasPopCnt() {
 		b.SkipNow()
 	}
 	for i := 0; i < b.N; i++ {
-		PopCntInt32(int32(i))
+		Int32PopCnt(int32(i))
 	}
 }
 
-func BenchmarkPopCntInt64(b *testing.B) {
+func BenchmarkInt64PopCnt(b *testing.B) {
 	if !HasPopCnt() {
 		b.SkipNow()
 	}
 	for i := 0; i < b.N; i++ {
-		PopCntInt64(int64(i))
+		Int64PopCnt(int64(i))
 	}
 }
 
-func BenchmarkPopCntInt(b *testing.B) {
+func BenchmarkIntPopCnt(b *testing.B) {
 	if !HasPopCnt() {
 		b.SkipNow()
 	}
 	for i := 0; i < b.N; i++ {
-		PopCntInt(i)
+		IntPopCnt(i)
 	}
 }
 
-func BenchmarkPopCntUint8(b *testing.B) {
+func BenchmarkUint8PopCnt(b *testing.B) {
 	if !HasPopCnt() {
 		b.SkipNow()
 	}
 	for i := 0; i < b.N; i++ {
-		PopCntUint8(uint8(i))
+		Uint8PopCnt(uint8(i))
 	}
 }
 
-func BenchmarkPopCntUint16(b *testing.B) {
+func BenchmarkUint16PopCnt(b *testing.B) {
 	if !HasPopCnt() {
 		b.SkipNow()
 	}
 	for i := 0; i < b.N; i++ {
-		PopCntUint16(uint16(i))
+		Uint16PopCnt(uint16(i))
 	}
 }
 
-func BenchmarkPopCntUint32(b *testing.B) {
+func BenchmarkUint32PopCnt(b *testing.B) {
 	if !HasPopCnt() {
 		b.SkipNow()
 	}
 	for i := 0; i < b.N; i++ {
-		PopCntUint32(uint32(i))
+		Uint32PopCnt(uint32(i))
 	}
 }
 
-func BenchmarkPopCntUint64(b *testing.B) {
+func BenchmarkUint64PopCnt(b *testing.B) {
 	if !HasPopCnt() {
 		b.SkipNow()
 	}
 	for i := 0; i < b.N; i++ {
-		PopCntUint64(uint64(i))
+		Uint64PopCnt(uint64(i))
 	}
 }
 
-func BenchmarkPopCntUint(b *testing.B) {
+func BenchmarkUintPopCnt(b *testing.B) {
 	if !HasPopCnt() {
 		b.SkipNow()
 	}
 	for i := 0; i < b.N; i++ {
-		PopCntUint(uint(i))
+		UintPopCnt(uint(i))
 	}
 }
 
-func BenchmarkPopCntByte(b *testing.B) {
+func BenchmarkBytePopCnt(b *testing.B) {
 	if !HasPopCnt() {
 		b.SkipNow()
 	}
 	for i := 0; i < b.N; i++ {
-		PopCntByte(byte(i))
+		BytePopCnt(byte(i))
 	}
 }
 
-func BenchmarkPopCntRune(b *testing.B) {
+func BenchmarkRunePopCnt(b *testing.B) {
 	if !HasPopCnt() {
 		b.SkipNow()
 	}
 	for i := 0; i < b.N; i++ {
-		PopCntRune(rune(i))
+		RunePopCnt(rune(i))
 	}
 }
