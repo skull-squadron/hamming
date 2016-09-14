@@ -7,6 +7,7 @@
 //
 // MIT license
 //
+
 package hamming
 
 import "strconv"
@@ -98,12 +99,10 @@ func CountBitsUintReference(x uint) int {
 }
 
 func CountBitsUint(x uint) int {
-	return CountBitsUint64(uint64(x))
-}
-
-var assertIntSizeNotMoreThan64Bits = func() interface{} {
-	if strconv.IntSize > 64 {
-		panic("CountBitsUint cannot function when IntSize > 64 bits")
+	if strconv.IntSize == 64 {
+		return CountBitsUint64(uint64(x))
+	} else if strconv.IntSize == 32 {
+		return CountBitsUint32(uint32(x))
 	}
-	return nil
-}()
+	panic("strconv.IntSize must be 32 or 64 bits")
+}

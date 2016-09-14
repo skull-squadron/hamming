@@ -7,15 +7,8 @@
 //
 // MIT license
 //
-package hamming
 
-func CountBitsBytes(b []byte) int {
-	c := 0
-	for _, x := range b {
-		c += CountBitsByte(x)
-	}
-	return c
-}
+package hamming
 
 func CountBitsInt8s(b []int8) int {
 	c := 0
@@ -49,6 +42,22 @@ func CountBitsInt64s(b []int64) int {
 	return c
 }
 
+func CountBitsInts(b []int) int {
+	c := 0
+	for _, x := range b {
+		c += CountBitsInt(x)
+	}
+	return c
+}
+
+func CountBitsUint8s(b []uint8) int {
+	c := 0
+	for _, x := range b {
+		c += CountBitsUint8(x)
+	}
+	return c
+}
+
 func CountBitsUint16s(b []uint16) int {
 	c := 0
 	for _, x := range b {
@@ -71,4 +80,32 @@ func CountBitsUint64s(b []uint64) int {
 		c += CountBitsUint64(x)
 	}
 	return c
+}
+
+func CountBitsUints(b []uint) int {
+	c := 0
+	for _, x := range b {
+		c += CountBitsUint(x)
+	}
+	return c
+}
+
+func CountBitsBytes(b []byte) int {
+	c := 0
+	for _, x := range b {
+		c += CountBitsByte(x)
+	}
+	return c
+}
+
+func CountBitsRunes(b []rune) int {
+	c := 0
+	for _, x := range b {
+		c += CountBitsRune(x)
+	}
+	return c
+}
+
+func CountBitsString(s string) int {
+	return CountBitsBytes([]byte(s))
 }

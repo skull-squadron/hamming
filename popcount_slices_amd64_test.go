@@ -16,7 +16,7 @@ import (
 	"unsafe"
 )
 
-func TestCountBitsInt8s(t *testing.T) {
+func TestCountBitsInt8sPopCnt(t *testing.T) {
 	for _, c := range testSliceCases {
 
 		bHdr := *(*reflect.SliceHeader)(unsafe.Pointer(&c.b))
@@ -24,23 +24,23 @@ func TestCountBitsInt8s(t *testing.T) {
 		bHdr.Cap *= 64 / 8
 		b := *(*[]int8)(unsafe.Pointer(&bHdr))
 
-		if actualN := CountBitsInt8s(b); actualN != c.n {
+		if actualN := CountBitsInt8sPopCnt(b); actualN != c.n {
 			t.Errorf("(%d) -> %d != %d", b, actualN, c.n)
 		}
 	}
 
 	t0, t0Cnt := []int8{1, 2, 3, 4, 5}, 1+1+2+1+2
-	if actualN := CountBitsInt8s(t0); actualN != t0Cnt {
+	if actualN := CountBitsInt8sPopCnt(t0); actualN != t0Cnt {
 		t.Errorf("(%d) -> %d != %d", t0, actualN, t0Cnt)
 	}
 
 	t1, t1Cnt := []int8{1, 2, 3, 4, 5, 7}, 1+1+2+1+2+3
-	if actualN := CountBitsInt8s(t1); actualN != t1Cnt {
+	if actualN := CountBitsInt8sPopCnt(t1); actualN != t1Cnt {
 		t.Errorf("(%d) -> %d != %d", t1, actualN, t1Cnt)
 	}
 
 	t2, t2Cnt := []int8{1, 2, 3, 4, 5, 7, -1}, 1+1+2+1+2+3+8
-	if actualN := CountBitsInt8s(t2); actualN != t2Cnt {
+	if actualN := CountBitsInt8sPopCnt(t2); actualN != t2Cnt {
 		t.Errorf("(%d) -> %d != %d", t2, actualN, t2Cnt)
 	}
 
@@ -50,12 +50,12 @@ func TestCountBitsInt8s(t *testing.T) {
 		0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 4, 5, 7, -1},
 		1+1+2+1+2+3+8+1+1
-	if actualN := CountBitsInt8s(t3); actualN != t3Cnt {
+	if actualN := CountBitsInt8sPopCnt(t3); actualN != t3Cnt {
 		t.Errorf("(%d) -> %d != %d", t3, actualN, t3Cnt)
 	}
 }
 
-func TestCountBitsInt16s(t *testing.T) {
+func TestCountBitsInt16sPopCnt(t *testing.T) {
 	for _, c := range testSliceCases {
 
 		bHdr := *(*reflect.SliceHeader)(unsafe.Pointer(&c.b))
@@ -63,13 +63,13 @@ func TestCountBitsInt16s(t *testing.T) {
 		bHdr.Cap *= 64 / 16
 		b := *(*[]int16)(unsafe.Pointer(&bHdr))
 
-		if actualN := CountBitsInt16s(b); actualN != c.n {
+		if actualN := CountBitsInt16sPopCnt(b); actualN != c.n {
 			t.Errorf("(%d) -> %d != %d", b, actualN, c.n)
 		}
 	}
 }
 
-func TestCountBitsInt32s(t *testing.T) {
+func TestCountBitsInt32sPopCnt(t *testing.T) {
 	for _, c := range testSliceCases {
 
 		bHdr := *(*reflect.SliceHeader)(unsafe.Pointer(&c.b))
@@ -77,7 +77,7 @@ func TestCountBitsInt32s(t *testing.T) {
 		bHdr.Cap *= 64 / 32
 		b := *(*[]int32)(unsafe.Pointer(&bHdr))
 
-		if actualN := CountBitsInt32s(b); actualN != c.n {
+		if actualN := CountBitsInt32sPopCnt(b); actualN != c.n {
 			t.Errorf("(%d) -> actual %d != expected %d", b, actualN, c.n)
 		} else {
 			t.Logf("(%d) -> actual %d == expected %d", b, actualN, c.n)
@@ -85,18 +85,18 @@ func TestCountBitsInt32s(t *testing.T) {
 	}
 }
 
-func TestCountBitsInt64s(t *testing.T) {
+func TestCountBitsInt64sPopCnt(t *testing.T) {
 	for _, c := range testSliceCases {
 
 		b := *(*[]int64)(unsafe.Pointer(&c.b))
 
-		if actualN := CountBitsInt64s(b); actualN != c.n {
+		if actualN := CountBitsInt64sPopCnt(b); actualN != c.n {
 			t.Errorf("(%d) -> %d != %d", b, actualN, c.n)
 		}
 	}
 }
 
-func TestCountBitsInts(t *testing.T) {
+func TestCountBitsIntsPopCnt(t *testing.T) {
 	for _, c := range testSliceCases {
 
 		bHdr := *(*reflect.SliceHeader)(unsafe.Pointer(&c.b))
@@ -104,7 +104,7 @@ func TestCountBitsInts(t *testing.T) {
 		bHdr.Cap *= 64 / strconv.IntSize
 		b := *(*[]int)(unsafe.Pointer(&bHdr))
 
-		if actualN := CountBitsInts(b); actualN != c.n {
+		if actualN := CountBitsIntsPopCnt(b); actualN != c.n {
 			t.Errorf("(%d) -> actual %d != expected %d", b, actualN, c.n)
 		} else {
 			t.Logf("(%d) -> actual %d == expected %d", b, actualN, c.n)
@@ -112,7 +112,7 @@ func TestCountBitsInts(t *testing.T) {
 	}
 }
 
-func TestCountBitsUint8s(t *testing.T) {
+func TestCountBitsUint8sPopCnt(t *testing.T) {
 	for _, c := range testSliceCases {
 
 		bHdr := *(*reflect.SliceHeader)(unsafe.Pointer(&c.b))
@@ -120,7 +120,7 @@ func TestCountBitsUint8s(t *testing.T) {
 		bHdr.Cap *= 64 / 8
 		b := *(*[]uint8)(unsafe.Pointer(&bHdr))
 
-		if actualN := CountBitsUint8s(b); actualN != c.n {
+		if actualN := CountBitsUint8sPopCnt(b); actualN != c.n {
 			t.Errorf("(%d) -> actual %d != expected %d", b, actualN, c.n)
 		} else {
 			t.Logf("(%d) -> actual %d == expected %d", b, actualN, c.n)
@@ -128,7 +128,7 @@ func TestCountBitsUint8s(t *testing.T) {
 	}
 }
 
-func TestCountBitsUint16s(t *testing.T) {
+func TestCountBitsUint16sPopCnt(t *testing.T) {
 	for _, c := range testSliceCases {
 
 		bHdr := *(*reflect.SliceHeader)(unsafe.Pointer(&c.b))
@@ -136,7 +136,7 @@ func TestCountBitsUint16s(t *testing.T) {
 		bHdr.Cap *= 64 / 16
 		b := *(*[]uint16)(unsafe.Pointer(&bHdr))
 
-		if actualN := CountBitsUint16s(b); actualN != c.n {
+		if actualN := CountBitsUint16sPopCnt(b); actualN != c.n {
 			t.Errorf("(%d) -> actual %d != expected %d", b, actualN, c.n)
 		} else {
 			t.Logf("(%d) -> actual %d == expected %d", b, actualN, c.n)
@@ -144,7 +144,7 @@ func TestCountBitsUint16s(t *testing.T) {
 	}
 }
 
-func TestCountBitsUint32s(t *testing.T) {
+func TestCountBitsUint32sPopCnt(t *testing.T) {
 	for _, c := range testSliceCases {
 
 		bHdr := *(*reflect.SliceHeader)(unsafe.Pointer(&c.b))
@@ -152,7 +152,7 @@ func TestCountBitsUint32s(t *testing.T) {
 		bHdr.Cap *= 64 / 32
 		b := *(*[]uint32)(unsafe.Pointer(&bHdr))
 
-		if actualN := CountBitsUint32s(b); actualN != c.n {
+		if actualN := CountBitsUint32sPopCnt(b); actualN != c.n {
 			t.Errorf("(%d) -> actual %d != expected %d", b, actualN, c.n)
 		} else {
 			t.Logf("(%d) -> actual %d == expected %d", b, actualN, c.n)
@@ -160,9 +160,9 @@ func TestCountBitsUint32s(t *testing.T) {
 	}
 }
 
-func TestCountBitsUint64s(t *testing.T) {
+func TestCountBitsUint64sPopCnt(t *testing.T) {
 	for _, c := range testSliceCases {
-		if actualN := CountBitsUint64s(c.b); actualN != c.n {
+		if actualN := CountBitsUint64sPopCnt(c.b); actualN != c.n {
 			t.Errorf("(%d) -> actual %d != expected %d", c.b, actualN, c.n)
 		} else {
 			t.Logf("(%d) -> actual %d == expected %d", c.b, actualN, c.n)
@@ -170,7 +170,7 @@ func TestCountBitsUint64s(t *testing.T) {
 	}
 }
 
-func TestCountBitsUints(t *testing.T) {
+func TestCountBitsUintsPopCnt(t *testing.T) {
 	for _, c := range testSliceCases {
 
 		bHdr := *(*reflect.SliceHeader)(unsafe.Pointer(&c.b))
@@ -178,13 +178,13 @@ func TestCountBitsUints(t *testing.T) {
 		bHdr.Cap *= 64 / strconv.IntSize
 		b := *(*[]uint)(unsafe.Pointer(&bHdr))
 
-		if actualN := CountBitsUints(b); actualN != c.n {
+		if actualN := CountBitsUintsPopCnt(b); actualN != c.n {
 			t.Errorf("(%d) -> %d != %d", b, actualN, c.n)
 		}
 	}
 }
 
-func TestCountBitsBytes(t *testing.T) {
+func TestCountBitsBytesPopCnt(t *testing.T) {
 	for _, c := range testSliceCases {
 
 		bHdr := *(*reflect.SliceHeader)(unsafe.Pointer(&c.b))
@@ -192,13 +192,13 @@ func TestCountBitsBytes(t *testing.T) {
 		bHdr.Cap *= 64 / 8
 		b := *(*[]byte)(unsafe.Pointer(&bHdr))
 
-		if actualN := CountBitsBytes(b); actualN != c.n {
+		if actualN := CountBitsBytesPopCnt(b); actualN != c.n {
 			t.Errorf("(%d) -> %d != %d", b, actualN, c.n)
 		}
 	}
 }
 
-func TestCountBitsRunes(t *testing.T) {
+func TestCountBitsRunesPopCnt(t *testing.T) {
 	for _, c := range testSliceCases {
 
 		bHdr := *(*reflect.SliceHeader)(unsafe.Pointer(&c.b))
@@ -206,19 +206,19 @@ func TestCountBitsRunes(t *testing.T) {
 		bHdr.Cap *= 64 / 32
 		b := *(*[]rune)(unsafe.Pointer(&bHdr))
 
-		if actualN := CountBitsRunes(b); actualN != c.n {
+		if actualN := CountBitsRunesPopCnt(b); actualN != c.n {
 			t.Errorf("(%d) -> %d != %d", b, actualN, c.n)
 		}
 	}
 }
 
-func TestCountBitsString(t *testing.T) {
+func TestCountBitsStringPopCnt(t *testing.T) {
 	for i, c := range testSliceCases {
 
 		bHdr := *(*reflect.SliceHeader)(unsafe.Pointer(&c.b))
 		b := *(*string)(unsafe.Pointer(&reflect.StringHeader{Data: bHdr.Data, Len: bHdr.Len * 64 / 8}))
 
-		if actualN := CountBitsString(b); actualN != c.n {
+		if actualN := CountBitsStringPopCnt(b); actualN != c.n {
 			t.Errorf("(%v) -> %d != %d", i, []byte(b), actualN, c.n)
 		}
 	}

@@ -7,250 +7,181 @@
 //
 // MIT license
 //
+
 package hamming
 
 import (
-	"math"
-	"strconv"
 	"testing"
+	"testing/quick"
 )
 
-const (
-	maxInt  = (1 << (strconv.IntSize - 1)) - 1
-	maxUint = (1 << strconv.IntSize) - 1
-)
+func refInt8(x, y int8) (r int) {
+	x ^= y
+	for x != 0 {
+		r++
+		x &= x - 1
+	}
+	return
+}
+func refInt16(x, y int16) (r int) {
+	x ^= y
+	for x != 0 {
+		r++
+		x &= x - 1
+	}
+	return
+}
+func refInt32(x, y int32) (r int) {
+	x ^= y
+	for x != 0 {
+		r++
+		x &= x - 1
+	}
+	return
+}
+func refInt64(x, y int64) (r int) {
+	x ^= y
+	for x != 0 {
+		r++
+		x &= x - 1
+	}
+	return
+}
+func refUint8(x, y uint8) (r int) {
+	x ^= y
+	for x != 0 {
+		r++
+		x &= x - 1
+	}
+	return
+}
+func refUint16(x, y uint16) (r int) {
+	x ^= y
+	for x != 0 {
+		r++
+		x &= x - 1
+	}
+	return
+}
+func refUint32(x, y uint32) (r int) {
+	x ^= y
+	for x != 0 {
+		r++
+		x &= x - 1
+	}
+	return
+}
+func refUint64(x, y uint64) (r int) {
+	x ^= y
+	for x != 0 {
+		r++
+		x &= x - 1
+	}
+	return
+}
+func refByte(x, y byte) (r int) {
+	x ^= y
+	for x != 0 {
+		r++
+		x &= x - 1
+	}
+	return
+}
+func refRune(x, y rune) (r int) {
+	x ^= y
+	for x != 0 {
+		r++
+		x &= x - 1
+	}
+	return
+}
 
-func TestCountBitInt8(t *testing.T) {
-	for _, c := range testCountBitsCases {
-		if c.x > math.MaxInt8 {
-			continue
-		}
-		if actualN := CountBitsInt8(int8(c.x)); actualN != c.n {
-			t.Fatalf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
-		}
+func TestInt8(t *testing.T) {
+	f := func(x, y int8) bool {
+		return Int8(x, y) == refInt8(x, y)
+	}
+	if err := quick.Check(f, nil); err != nil {
+		t.Error(err)
 	}
 }
 
-func TestCountBitInt16(t *testing.T) {
-	for _, c := range testCountBitsCases {
-		if c.x > math.MaxInt16 {
-			continue
-		}
-		if actualN := CountBitsInt16(int16(c.x)); actualN != c.n {
-			t.Fatalf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
-		}
+func TestInt16(t *testing.T) {
+	f := func(x, y int16) bool {
+		return Int16(x, y) == refInt16(x, y)
+	}
+	if err := quick.Check(f, nil); err != nil {
+		t.Error(err)
 	}
 }
 
-func TestCountBitInt32(t *testing.T) {
-	for _, c := range testCountBitsCases {
-		if c.x > math.MaxInt32 {
-			continue
-		}
-		if actualN := CountBitsInt32(int32(c.x)); actualN != c.n {
-			t.Fatalf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
-		}
+func TestInt32(t *testing.T) {
+	f := func(x, y int32) bool {
+		return Int32(x, y) == refInt32(x, y)
+	}
+	if err := quick.Check(f, nil); err != nil {
+		t.Error(err)
 	}
 }
 
-func TestCountBitInt64(t *testing.T) {
-	for _, c := range testCountBitsCases {
-		if actualN := CountBitsInt64(int64(c.x)); actualN != c.n {
-			t.Fatalf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
-		}
+func TestInt64(t *testing.T) {
+	f := func(x, y int64) bool {
+		return Int64(x, y) == refInt64(x, y)
+	}
+	if err := quick.Check(f, nil); err != nil {
+		t.Error(err)
 	}
 }
 
-func TestCountBitInt(t *testing.T) {
-	for _, c := range testCountBitsCases {
-		if c.x > maxInt {
-			continue
-		}
-		if actualN := CountBitsInt(int(c.x)); actualN != c.n {
-			t.Fatalf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
-		}
+func TestUint8(t *testing.T) {
+	f := func(x, y uint8) bool {
+		return Uint8(x, y) == refUint8(x, y)
+	}
+	if err := quick.Check(f, nil); err != nil {
+		t.Error(err)
 	}
 }
 
-func TestCountBitUint8(t *testing.T) {
-	for _, c := range testCountBitsCases {
-		if c.x > math.MaxUint8 {
-			continue
-		}
-		if actualN := CountBitsUint8(uint8(c.x)); actualN != c.n {
-			t.Fatalf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
-		}
+func TestUint16(t *testing.T) {
+	f := func(x, y uint16) bool {
+		return Uint16(x, y) == refUint16(x, y)
+	}
+	if err := quick.Check(f, nil); err != nil {
+		t.Error(err)
 	}
 }
 
-func TestCountBitUint16(t *testing.T) {
-	for _, c := range testCountBitsCases {
-		if c.x > math.MaxUint16 {
-			continue
-		}
-		if actualN := CountBitsUint16(uint16(c.x)); actualN != c.n {
-			t.Fatalf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
-		}
+func TestUint32(t *testing.T) {
+	f := func(x, y uint32) bool {
+		return Uint32(x, y) == refUint32(x, y)
+	}
+	if err := quick.Check(f, nil); err != nil {
+		t.Error(err)
 	}
 }
 
-func TestCountBitUint32(t *testing.T) {
-	for _, c := range testCountBitsCases {
-		if c.x > math.MaxUint32 {
-			continue
-		}
-		if actualN := CountBitsUint32(uint32(c.x)); actualN != c.n {
-			t.Fatalf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
-		}
+func TestUint64(t *testing.T) {
+	f := func(x, y uint64) bool {
+		return Uint64(x, y) == refUint64(x, y)
+	}
+	if err := quick.Check(f, nil); err != nil {
+		t.Error(err)
 	}
 }
 
-func TestCountBitUint64(t *testing.T) {
-	for _, c := range testCountBitsCases {
-		if actualN := CountBitsUint64(c.x); actualN != c.n {
-			t.Fatalf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
-		}
+func TestByte(t *testing.T) {
+	f := func(x, y byte) bool {
+		return Byte(x, y) == refByte(x, y)
+	}
+	if err := quick.Check(f, nil); err != nil {
+		t.Error(err)
 	}
 }
 
-func TestCountBitUint(t *testing.T) {
-	for _, c := range testCountBitsCases {
-		if c.x > maxUint {
-			continue
-		}
-		if actualN := CountBitsUint(uint(c.x)); actualN != c.n {
-			t.Fatalf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
-		}
+func TestRune(t *testing.T) {
+	f := func(x, y rune) bool {
+		return Rune(x, y) == refRune(x, y)
 	}
-}
-
-func TestCountBitUintReference(t *testing.T) {
-	for _, c := range testCountBitsCases {
-		if c.x > maxUint {
-			continue
-		}
-		if actualN := CountBitsUintReference(uint(c.x)); actualN != c.n {
-			t.Fatalf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
-		}
-	}
-}
-
-func TestCountBitByte(t *testing.T) {
-	for _, c := range testCountBitsCases {
-		if c.x > math.MaxUint8 {
-			continue
-		}
-		if actualN := CountBitsByte(byte(c.x)); actualN != c.n {
-			t.Fatalf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
-		}
-	}
-}
-
-func TestCountBitByteAlt(t *testing.T) {
-	for _, c := range testCountBitsCases {
-		if c.x > math.MaxUint8 {
-			continue
-		}
-		if actualN := CountBitsByteAlt(byte(c.x)); actualN != c.n {
-			t.Fatalf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
-		}
-	}
-}
-
-func TestCountBitRune(t *testing.T) {
-	for _, c := range testCountBitsCases {
-		if c.x > math.MaxInt32 {
-			continue
-		}
-		if actualN := CountBitsRune(rune(c.x)); actualN != c.n {
-			t.Fatalf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
-		}
-	}
-}
-
-// ============== benchmarks ==============
-
-func BenchmarkCountBitsInt8(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		CountBitsInt8(int8(i))
-	}
-}
-
-func BenchmarkCountBitsInt16(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		CountBitsInt16(int16(i))
-	}
-}
-
-func BenchmarkCountBitsInt32(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		CountBitsInt32(int32(i))
-	}
-}
-
-func BenchmarkCountBitsInt64(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		CountBitsInt64(int64(i))
-	}
-}
-
-func BenchmarkCountBitsInt(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		CountBitsInt(int(i))
-	}
-}
-
-func BenchmarkCountBitsUint16(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		CountBitsUint16(uint16(i))
-	}
-}
-
-func BenchmarkCountBitsUint32(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		CountBitsUint32(uint32(i))
-	}
-}
-
-func BenchmarkCountBitsUint64(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		CountBitsUint64(uint64(i))
-	}
-}
-
-func BenchmarkCountBitsUint64Alt(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		CountBitsUint64Alt(uint64(i))
-	}
-}
-
-func BenchmarkCountBitsUint(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		CountBitsUint(uint(i))
-	}
-}
-
-func BenchmarkCountBitsUintReference(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		CountBitsUintReference(uint(i))
-	}
-}
-
-func BenchmarkCountBitsByte(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		CountBitsByte(byte(i))
-	}
-}
-
-func BenchmarkCountBitsByteAlt(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		CountBitsByteAlt(byte(i))
-	}
-
-}
-
-func BenchmarkCountBitsRune(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		CountBitsRune(rune(i))
+	if err := quick.Check(f, nil); err != nil {
+		t.Error(err)
 	}
 }

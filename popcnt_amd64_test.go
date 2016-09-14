@@ -18,6 +18,9 @@ import (
 )
 
 func TestPopCntInt8(t *testing.T) {
+	if !HasPopCnt() {
+		t.SkipNow()
+	}
 	for _, c := range testCountBitsCases {
 		if c.x > math.MaxInt8 {
 			continue
@@ -29,6 +32,9 @@ func TestPopCntInt8(t *testing.T) {
 }
 
 func TestPopCntInt16(t *testing.T) {
+	if !HasPopCnt() {
+		t.SkipNow()
+	}
 	for _, c := range testCountBitsCases {
 		if c.x > math.MaxInt16 {
 			continue
@@ -40,6 +46,9 @@ func TestPopCntInt16(t *testing.T) {
 }
 
 func TestPopCntInt32(t *testing.T) {
+	if !HasPopCnt() {
+		t.SkipNow()
+	}
 	for _, c := range testCountBitsCases {
 		if c.x > math.MaxInt32 {
 			continue
@@ -51,6 +60,9 @@ func TestPopCntInt32(t *testing.T) {
 }
 
 func TestPopCntInt64(t *testing.T) {
+	if !HasPopCnt() {
+		t.SkipNow()
+	}
 	for _, c := range testCountBitsCases {
 		if c.x > math.MaxInt64 {
 			continue
@@ -62,6 +74,9 @@ func TestPopCntInt64(t *testing.T) {
 }
 
 func TestPopCntInt(t *testing.T) {
+	if !HasPopCnt() {
+		t.SkipNow()
+	}
 	for _, c := range testCountBitsCases {
 		if c.x > maxInt {
 			continue
@@ -73,6 +88,9 @@ func TestPopCntInt(t *testing.T) {
 }
 
 func TestPopCntUint8(t *testing.T) {
+	if !HasPopCnt() {
+		t.SkipNow()
+	}
 	for _, c := range testCountBitsCases {
 		if c.x > math.MaxUint8 {
 			continue
@@ -84,6 +102,9 @@ func TestPopCntUint8(t *testing.T) {
 }
 
 func TestPopCntUint16(t *testing.T) {
+	if !HasPopCnt() {
+		t.SkipNow()
+	}
 	for _, c := range testCountBitsCases {
 		if c.x > math.MaxUint16 {
 			continue
@@ -95,6 +116,9 @@ func TestPopCntUint16(t *testing.T) {
 }
 
 func TestPopCntUint32(t *testing.T) {
+	if !HasPopCnt() {
+		t.SkipNow()
+	}
 	for _, c := range testCountBitsCases {
 		if c.x > math.MaxUint32 {
 			continue
@@ -106,7 +130,13 @@ func TestPopCntUint32(t *testing.T) {
 }
 
 func TestPopCntUint64(t *testing.T) {
+	if !HasPopCnt() {
+		t.SkipNow()
+	}
 	for _, c := range testCountBitsCases {
+		if c.x > math.MaxUint64 {
+			continue
+		}
 		if actualN := PopCntUint64(c.x); actualN != c.n {
 			t.Fatalf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
 		}
@@ -114,6 +144,9 @@ func TestPopCntUint64(t *testing.T) {
 }
 
 func TestPopCntByte(t *testing.T) {
+	if !HasPopCnt() {
+		t.SkipNow()
+	}
 	for _, c := range testCountBitsCases {
 		if c.x > math.MaxUint8 {
 			continue
@@ -125,6 +158,9 @@ func TestPopCntByte(t *testing.T) {
 }
 
 func TestPopCntRune(t *testing.T) {
+	if !HasPopCnt() {
+		t.SkipNow()
+	}
 	for _, c := range testCountBitsCases {
 		if c.x > math.MaxInt32 {
 			continue
@@ -138,72 +174,108 @@ func TestPopCntRune(t *testing.T) {
 // ============== benchmarks ==============
 
 func BenchmarkPopCntInt8(b *testing.B) {
+	if !HasPopCnt() {
+		b.SkipNow()
+	}
 	for i := 0; i < b.N; i++ {
 		PopCntInt8(int8(i))
 	}
 }
 
 func BenchmarkPopCntInt16(b *testing.B) {
+	if !HasPopCnt() {
+		b.SkipNow()
+	}
 	for i := 0; i < b.N; i++ {
 		PopCntInt16(int16(i))
 	}
 }
 
 func BenchmarkPopCntInt32(b *testing.B) {
+	if !HasPopCnt() {
+		b.SkipNow()
+	}
 	for i := 0; i < b.N; i++ {
 		PopCntInt32(int32(i))
 	}
 }
 
 func BenchmarkPopCntInt64(b *testing.B) {
+	if !HasPopCnt() {
+		b.SkipNow()
+	}
 	for i := 0; i < b.N; i++ {
 		PopCntInt64(int64(i))
 	}
 }
 
 func BenchmarkPopCntInt(b *testing.B) {
+	if !HasPopCnt() {
+		b.SkipNow()
+	}
 	for i := 0; i < b.N; i++ {
 		PopCntInt(i)
 	}
 }
 
 func BenchmarkPopCntUint8(b *testing.B) {
+	if !HasPopCnt() {
+		b.SkipNow()
+	}
 	for i := 0; i < b.N; i++ {
 		PopCntUint8(uint8(i))
 	}
 }
 
 func BenchmarkPopCntUint16(b *testing.B) {
+	if !HasPopCnt() {
+		b.SkipNow()
+	}
 	for i := 0; i < b.N; i++ {
 		PopCntUint16(uint16(i))
 	}
 }
 
 func BenchmarkPopCntUint32(b *testing.B) {
+	if !HasPopCnt() {
+		b.SkipNow()
+	}
 	for i := 0; i < b.N; i++ {
 		PopCntUint32(uint32(i))
 	}
 }
 
 func BenchmarkPopCntUint64(b *testing.B) {
+	if !HasPopCnt() {
+		b.SkipNow()
+	}
 	for i := 0; i < b.N; i++ {
 		PopCntUint64(uint64(i))
 	}
 }
 
 func BenchmarkPopCntUint(b *testing.B) {
+	if !HasPopCnt() {
+		b.SkipNow()
+	}
 	for i := 0; i < b.N; i++ {
 		PopCntUint(uint(i))
 	}
 }
 
 func BenchmarkPopCntByte(b *testing.B) {
+	if !HasPopCnt() {
+		b.SkipNow()
+	}
 	for i := 0; i < b.N; i++ {
 		PopCntByte(byte(i))
 	}
 }
 
 func BenchmarkPopCntRune(b *testing.B) {
+	if !HasPopCnt() {
+		b.SkipNow()
+	}
 	for i := 0; i < b.N; i++ {
 		PopCntRune(rune(i))
 	}
