@@ -11,34 +11,34 @@ Copyright © 2014, 2015, 2016 Barry Allard
 
 ```
 $ go test -bench=.
-BenchmarkInt8PopCnt-4               	500000000	         3.97 ns/op
-BenchmarkInt16PopCnt-4              	500000000	         3.22 ns/op
-BenchmarkInt32PopCnt-4              	500000000	         3.33 ns/op
-BenchmarkInt64PopCnt-4              	500000000	         3.36 ns/op
-BenchmarkIntPopCnt-4                	300000000	         5.67 ns/op
-BenchmarkUint8PopCnt-4              	1000000000	         2.78 ns/op
-BenchmarkUint16PopCnt-4             	1000000000	         2.82 ns/op
-BenchmarkUint32PopCnt-4             	1000000000	         2.67 ns/op
-BenchmarkUint64PopCnt-4             	1000000000	         2.68 ns/op
-BenchmarkUintPopCnt-4               	300000000	         4.87 ns/op
-BenchmarkBytePopCnt-4               	500000000	         4.07 ns/op
-BenchmarkRunePopCnt-4               	500000000	         3.69 ns/op
-BenchmarkCountBitsInt8-4            	2000000000	         0.41 ns/op
-BenchmarkCountBitsInt16-4           	2000000000	         0.40 ns/op
-BenchmarkCountBitsInt32-4           	2000000000	         0.38 ns/op
-BenchmarkCountBitsInt64-4           	2000000000	         0.36 ns/op
-BenchmarkCountBitsInt-4             	200000000	         6.20 ns/op
-BenchmarkCountBitsUint16-4          	2000000000	         0.37 ns/op
-BenchmarkCountBitsUint32-4          	2000000000	         0.37 ns/op
-BenchmarkCountBitsUint64-4          	2000000000	         0.36 ns/op
-BenchmarkCountBitsUint64Alt-4       	200000000	         7.25 ns/op
-BenchmarkCountBitsUint-4            	500000000	         4.08 ns/op
-BenchmarkCountBitsUintReference-4   	100000000	        17.1 ns/op
+BenchmarkCountBitsInt8PopCnt-4      	500000000	         3.96 ns/op
+BenchmarkCountBitsInt16PopCnt-4     	500000000	         3.24 ns/op
+BenchmarkCountBitsInt32PopCnt-4     	500000000	         3.36 ns/op
+BenchmarkCountBitsInt64PopCnt-4     	500000000	         3.44 ns/op
+BenchmarkCountBitsIntPopCnt-4       	300000000	         5.42 ns/op
+BenchmarkCountBitsUint8PopCnt-4     	1000000000	         2.60 ns/op
+BenchmarkCountBitsUint16PopCnt-4    	1000000000	         2.59 ns/op
+BenchmarkCountBitsUint32PopCnt-4    	1000000000	         2.55 ns/op
+BenchmarkCountBitsUint64PopCnt-4    	1000000000	         2.51 ns/op
+BenchmarkCountBitsUintPopCnt-4      	300000000	         4.38 ns/op
+BenchmarkCountBitsBytePopCnt-4      	500000000	         3.21 ns/op
+BenchmarkCountBitsRunePopCnt-4      	500000000	         3.29 ns/op
+BenchmarkCountBitsInt8-4            	2000000000	         0.38 ns/op
+BenchmarkCountBitsInt16-4           	2000000000	         0.41 ns/op
+BenchmarkCountBitsInt32-4           	2000000000	         0.36 ns/op
+BenchmarkCountBitsInt64-4           	2000000000	         0.37 ns/op
+BenchmarkCountBitsInt-4             	200000000	         6.36 ns/op
+BenchmarkCountBitsUint16-4          	2000000000	         0.36 ns/op
+BenchmarkCountBitsUint32-4          	2000000000	         0.35 ns/op
+BenchmarkCountBitsUint64-4          	2000000000	         0.37 ns/op
+BenchmarkCountBitsUint64Alt-4       	200000000	         7.06 ns/op
+BenchmarkCountBitsUint-4            	300000000	         4.16 ns/op
+BenchmarkCountBitsUintReference-4   	100000000	        16.9 ns/op
 BenchmarkCountBitsByte-4            	2000000000	         0.36 ns/op
 BenchmarkCountBitsByteAlt-4         	2000000000	         0.36 ns/op
-BenchmarkCountBitsRune-4            	2000000000	         0.35 ns/op
+BenchmarkCountBitsRune-4            	2000000000	         0.37 ns/op
 PASS
-ok  	github.com/steakknife/hamming	45.092s
+ok  	github.com/steakknife/hamming	42.730s
 $
 ```
 

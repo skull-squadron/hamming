@@ -10,46 +10,46 @@
 
 #include "textflag.h"
 
-TEXT ·Int8PopCnt(SB),NOSPLIT,$0
-	JMP        ·BytePopCnt(SB)
+TEXT ·CountBitsInt8PopCnt(SB),NOSPLIT,$0
+	JMP        ·CountBitsBytePopCnt(SB)
 
-TEXT ·Int16PopCnt(SB),NOSPLIT,$0
-	JMP        ·Uint16PopCnt(SB)
+TEXT ·CountBitsInt16PopCnt(SB),NOSPLIT,$0
+	JMP        ·CountBitsUint16PopCnt(SB)
 
-TEXT ·Int32PopCnt(SB),NOSPLIT,$0
-	JMP        ·Uint32PopCnt(SB)
+TEXT ·CountBitsInt32PopCnt(SB),NOSPLIT,$0
+	JMP        ·CountBitsUint32PopCnt(SB)
 
-TEXT ·Int64PopCnt(SB),NOSPLIT,$0
-	JMP        ·Uint64PopCnt(SB)
+TEXT ·CountBitsInt64PopCnt(SB),NOSPLIT,$0
+	JMP        ·CountBitsUint64PopCnt(SB)
 
-TEXT ·BytePopCnt(SB),NOSPLIT,$0
-	JMP        ·Uint8PopCnt(SB)
+TEXT ·CountBitsBytePopCnt(SB),NOSPLIT,$0
+	JMP        ·CountBitsUint8PopCnt(SB)
 
-TEXT ·RunePopCnt(SB),NOSPLIT,$0
-	JMP        ·Uint32PopCnt(SB)
+TEXT ·CountBitsRunePopCnt(SB),NOSPLIT,$0
+	JMP        ·CountBitsUint32PopCnt(SB)
 
-TEXT ·Uint8PopCnt(SB),NOSPLIT,$0
+TEXT ·CountBitsUint8PopCnt(SB),NOSPLIT,$0
 	XORQ       AX, AX
 	MOVB       x+0(FP), AX
 	POPCNTQ    AX, AX	
 	MOVQ       AX, ret+8(FP)
 	RET
 
-TEXT ·Uint16PopCnt(SB),NOSPLIT,$0
+TEXT ·CountBitsUint16PopCnt(SB),NOSPLIT,$0
 	XORQ       AX, AX
 	MOVW       x+0(FP), AX
 	POPCNTQ    AX, AX	
 	MOVQ       AX, ret+8(FP)
 	RET
 
-TEXT ·Uint32PopCnt(SB),NOSPLIT,$0
+TEXT ·CountBitsUint32PopCnt(SB),NOSPLIT,$0
 	XORQ       AX, AX
 	MOVL       x+0(FP), AX
 	POPCNTQ    AX, AX	
 	MOVQ       AX, ret+8(FP)
 	RET
 
-TEXT ·Uint64PopCnt(SB),NOSPLIT,$0
+TEXT ·CountBitsUint64PopCnt(SB),NOSPLIT,$0
 	POPCNTQ    x+0(FP), AX
 	MOVQ       AX, ret+8(FP)
 	RET
