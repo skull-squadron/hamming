@@ -22,55 +22,55 @@ const (
 
 func TestCountBitsInt8(t *testing.T) {
 	for _, c := range testCountBitsCases {
-		if c.x > math.MaxInt8 {
+		if c.x > math.MaxUint8 {
 			continue
 		}
 		if actualN := CountBitsInt8(int8(c.x)); actualN != c.n {
-			t.Fatalf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
+			t.Errorf("%d -> (actual) %d != %d (expected)", int8(c.x), actualN, c.n)
 		}
 	}
 }
 
 func TestCountBitsInt16(t *testing.T) {
 	for _, c := range testCountBitsCases {
-		if c.x > math.MaxInt16 {
+		if c.x > math.MaxUint16 {
 			continue
 		}
 		if actualN := CountBitsInt16(int16(c.x)); actualN != c.n {
-			t.Fatalf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
+			t.Errorf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
 		}
 	}
 }
 
 func TestCountBitsInt32(t *testing.T) {
 	for _, c := range testCountBitsCases {
-		if c.x > math.MaxInt32 {
+		if c.x > math.MaxUint32 {
 			continue
 		}
 		if actualN := CountBitsInt32(int32(c.x)); actualN != c.n {
-			t.Fatalf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
+			t.Errorf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
 		}
 	}
 }
 
 func TestCountBitsInt64(t *testing.T) {
 	for _, c := range testCountBitsCases {
-		if c.x > math.MaxInt64 {
+		if c.x > math.MaxUint64 {
 			continue
 		}
 		if actualN := CountBitsInt64(int64(c.x)); actualN != c.n {
-			t.Fatalf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
+			t.Errorf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
 		}
 	}
 }
 
 func TestCountBitsInt(t *testing.T) {
 	for _, c := range testCountBitsCases {
-		if c.x > maxInt {
+		if c.x > maxUint {
 			continue
 		}
 		if actualN := CountBitsInt(int(c.x)); actualN != c.n {
-			t.Fatalf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
+			t.Errorf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
 		}
 	}
 }
@@ -81,7 +81,7 @@ func TestCountBitsUint8(t *testing.T) {
 			continue
 		}
 		if actualN := CountBitsUint8(uint8(c.x)); actualN != c.n {
-			t.Fatalf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
+			t.Errorf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
 		}
 	}
 }
@@ -92,7 +92,7 @@ func TestCountBitsUint16(t *testing.T) {
 			continue
 		}
 		if actualN := CountBitsUint16(uint16(c.x)); actualN != c.n {
-			t.Fatalf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
+			t.Errorf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
 		}
 	}
 }
@@ -103,7 +103,7 @@ func TestCountBitsUint32(t *testing.T) {
 			continue
 		}
 		if actualN := CountBitsUint32(uint32(c.x)); actualN != c.n {
-			t.Fatalf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
+			t.Errorf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
 		}
 	}
 }
@@ -111,7 +111,7 @@ func TestCountBitsUint32(t *testing.T) {
 func TestCountBitsUint64(t *testing.T) {
 	for _, c := range testCountBitsCases {
 		if actualN := CountBitsUint64(c.x); actualN != c.n {
-			t.Fatalf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
+			t.Errorf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
 		}
 	}
 }
@@ -119,7 +119,7 @@ func TestCountBitsUint64(t *testing.T) {
 func TestCountBitsUint64Alt(t *testing.T) {
 	for _, c := range testCountBitsCases {
 		if actualN := CountBitsUint64Alt(c.x); actualN != c.n {
-			t.Fatalf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
+			t.Errorf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
 		}
 	}
 }
@@ -130,7 +130,7 @@ func TestCountBitsUint(t *testing.T) {
 			continue
 		}
 		if actualN := CountBitsUint(uint(c.x)); actualN != c.n {
-			t.Fatalf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
+			t.Errorf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
 		}
 	}
 }
@@ -141,7 +141,7 @@ func TestCountBitsUintReference(t *testing.T) {
 			continue
 		}
 		if actualN := CountBitsUintReference(uint(c.x)); actualN != c.n {
-			t.Fatalf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
+			t.Errorf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
 		}
 	}
 }
@@ -152,7 +152,7 @@ func TestCountBitsByte(t *testing.T) {
 			continue
 		}
 		if actualN := CountBitsByte(byte(c.x)); actualN != c.n {
-			t.Fatalf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
+			t.Errorf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
 		}
 	}
 }
@@ -163,7 +163,7 @@ func TestCountBitsByteAlt(t *testing.T) {
 			continue
 		}
 		if actualN := CountBitsByteAlt(byte(c.x)); actualN != c.n {
-			t.Fatalf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
+			t.Errorf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
 		}
 	}
 }
@@ -174,7 +174,7 @@ func TestCountBitsRune(t *testing.T) {
 			continue
 		}
 		if actualN := CountBitsRune(rune(c.x)); actualN != c.n {
-			t.Fatalf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
+			t.Errorf("%d -> (actual) %d != %d (expected)", c.x, actualN, c.n)
 		}
 	}
 }
