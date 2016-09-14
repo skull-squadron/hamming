@@ -10,7 +10,9 @@
 //
 // Usage
 //
-// The functions are named (CountBits)?(Byte|Uint64)s?.  The plural forms are for slices.  The CountBits.+ forms are Population Count only, where the bare-type forms are Hamming distance.
+// For functions named CountBits.+s?.  The plural forms are for slices.  The CountBits.+ forms are Population Count only, where the bare-type forms are Hamming distance (number of bits different) between two values.
+//
+// Optimized assembly PopCnt.+ forms are availble on amd64, and operate just like CountBits.+ (Must check and guard on HasPopCnt() first before trying to call PopCnt.+).
 //
 //    import 'github.com/steakknife/hamming'
 //
