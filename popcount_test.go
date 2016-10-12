@@ -180,88 +180,114 @@ func TestCountBitsRune(t *testing.T) {
 }
 
 // ============== benchmarks ==============
-
 func BenchmarkCountBitsInt8(b *testing.B) {
+	stopDeadCodeElimination := 0
 	for i := 0; i < b.N; i++ {
-		CountBitsInt8(int8(i))
+		stopDeadCodeElimination |= CountBitsInt8(int8(i))
 	}
+	nullLog.Printf("stopDeadCodeElimination: %d", stopDeadCodeElimination)
 }
 
 func BenchmarkCountBitsInt16(b *testing.B) {
+	stopDeadCodeElimination := 0
 	for i := 0; i < b.N; i++ {
-		CountBitsInt16(int16(i))
+		stopDeadCodeElimination |= CountBitsInt16(int16(i))
 	}
+	nullLog.Printf("stopDeadCodeElimination: %d", stopDeadCodeElimination)
 }
 
 func BenchmarkCountBitsInt32(b *testing.B) {
+	stopDeadCodeElimination := 0
 	for i := 0; i < b.N; i++ {
-		CountBitsInt32(int32(i))
+		stopDeadCodeElimination |= CountBitsInt32(int32(i))
 	}
+	nullLog.Printf("stopDeadCodeElimination: %d", stopDeadCodeElimination)
 }
 
 func BenchmarkCountBitsInt64(b *testing.B) {
+	stopDeadCodeElimination := 0
 	for i := 0; i < b.N; i++ {
-		CountBitsInt64(int64(i))
+		stopDeadCodeElimination |= CountBitsInt64(int64(i))
 	}
+	nullLog.Printf("stopDeadCodeElimination: %d", stopDeadCodeElimination)
 }
 
 func BenchmarkCountBitsInt(b *testing.B) {
+	stopDeadCodeElimination := 0
 	for i := 0; i < b.N; i++ {
-		CountBitsInt(int(i))
+		stopDeadCodeElimination |= CountBitsInt(int(i))
 	}
+	nullLog.Printf("stopDeadCodeElimination: %d", stopDeadCodeElimination)
 }
 
 func BenchmarkCountBitsUint16(b *testing.B) {
+	stopDeadCodeElimination := 0
 	for i := 0; i < b.N; i++ {
-		CountBitsUint16(uint16(i))
+		stopDeadCodeElimination |= CountBitsUint16(uint16(i))
 	}
+	nullLog.Printf("stopDeadCodeElimination: %d", stopDeadCodeElimination)
 }
 
 func BenchmarkCountBitsUint32(b *testing.B) {
+	stopDeadCodeElimination := 0
 	for i := 0; i < b.N; i++ {
-		CountBitsUint32(uint32(i))
+		stopDeadCodeElimination |= CountBitsUint32(uint32(i))
 	}
+	nullLog.Printf("stopDeadCodeElimination: %d", stopDeadCodeElimination)
 }
 
 func BenchmarkCountBitsUint64(b *testing.B) {
+	stopDeadCodeElimination := 0
 	for i := 0; i < b.N; i++ {
-		CountBitsUint64(uint64(i))
+		stopDeadCodeElimination |= CountBitsUint64(uint64(i))
 	}
+	nullLog.Printf("stopDeadCodeElimination: %d", stopDeadCodeElimination)
 }
 
 func BenchmarkCountBitsUint64Alt(b *testing.B) {
+	stopDeadCodeElimination := 0
 	for i := 0; i < b.N; i++ {
-		CountBitsUint64Alt(uint64(i))
+		stopDeadCodeElimination |= CountBitsUint64Alt(uint64(i))
 	}
+	nullLog.Printf("stopDeadCodeElimination: %d", stopDeadCodeElimination)
 }
 
 func BenchmarkCountBitsUint(b *testing.B) {
+	stopDeadCodeElimination := 0
 	for i := 0; i < b.N; i++ {
-		CountBitsUint(uint(i))
+		stopDeadCodeElimination |= CountBitsUint(uint(i))
 	}
+	nullLog.Printf("stopDeadCodeElimination: %d", stopDeadCodeElimination)
 }
 
 func BenchmarkCountBitsUintReference(b *testing.B) {
+	stopDeadCodeElimination := 0
 	for i := 0; i < b.N; i++ {
-		CountBitsUintReference(uint(i))
+		stopDeadCodeElimination |= CountBitsUintReference(uint(i))
 	}
+	nullLog.Printf("stopDeadCodeElimination: %d", stopDeadCodeElimination)
 }
 
 func BenchmarkCountBitsByte(b *testing.B) {
+	stopDeadCodeElimination := 0
 	for i := 0; i < b.N; i++ {
-		CountBitsByte(byte(i))
+		stopDeadCodeElimination |= CountBitsByte(byte(i))
 	}
+	nullLog.Printf("stopDeadCodeElimination: %d", stopDeadCodeElimination)
 }
 
 func BenchmarkCountBitsByteAlt(b *testing.B) {
+	stopDeadCodeElimination := 0
 	for i := 0; i < b.N; i++ {
-		CountBitsByteAlt(byte(i))
+		stopDeadCodeElimination |= CountBitsByteAlt(byte(i))
 	}
-
+	nullLog.Printf("stopDeadCodeElimination: %d", stopDeadCodeElimination)
 }
 
 func BenchmarkCountBitsRune(b *testing.B) {
+	stopDeadCodeElimination := 0
 	for i := 0; i < b.N; i++ {
-		CountBitsRune(rune(i))
+		stopDeadCodeElimination |= CountBitsRune(rune(i))
 	}
+	nullLog.Printf("stopDeadCodeElimination: %d", stopDeadCodeElimination)
 }

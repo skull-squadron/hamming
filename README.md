@@ -11,34 +11,34 @@ Copyright © 2014, 2015, 2016 Barry Allard
 
 ```
 $ go test -bench=.
-BenchmarkCountBitsInt8PopCnt-4      	500000000	         3.96 ns/op
-BenchmarkCountBitsInt16PopCnt-4     	500000000	         3.24 ns/op
-BenchmarkCountBitsInt32PopCnt-4     	500000000	         3.36 ns/op
-BenchmarkCountBitsInt64PopCnt-4     	500000000	         3.44 ns/op
-BenchmarkCountBitsIntPopCnt-4       	300000000	         5.42 ns/op
-BenchmarkCountBitsUint8PopCnt-4     	1000000000	         2.60 ns/op
-BenchmarkCountBitsUint16PopCnt-4    	1000000000	         2.59 ns/op
-BenchmarkCountBitsUint32PopCnt-4    	1000000000	         2.55 ns/op
-BenchmarkCountBitsUint64PopCnt-4    	1000000000	         2.51 ns/op
-BenchmarkCountBitsUintPopCnt-4      	300000000	         4.38 ns/op
-BenchmarkCountBitsBytePopCnt-4      	500000000	         3.21 ns/op
-BenchmarkCountBitsRunePopCnt-4      	500000000	         3.29 ns/op
-BenchmarkCountBitsInt8-4            	2000000000	         0.38 ns/op
-BenchmarkCountBitsInt16-4           	2000000000	         0.41 ns/op
-BenchmarkCountBitsInt32-4           	2000000000	         0.36 ns/op
-BenchmarkCountBitsInt64-4           	2000000000	         0.37 ns/op
-BenchmarkCountBitsInt-4             	200000000	         6.36 ns/op
-BenchmarkCountBitsUint16-4          	2000000000	         0.36 ns/op
-BenchmarkCountBitsUint32-4          	2000000000	         0.35 ns/op
-BenchmarkCountBitsUint64-4          	2000000000	         0.37 ns/op
-BenchmarkCountBitsUint64Alt-4       	200000000	         7.06 ns/op
-BenchmarkCountBitsUint-4            	300000000	         4.16 ns/op
-BenchmarkCountBitsUintReference-4   	100000000	        16.9 ns/op
-BenchmarkCountBitsByte-4            	2000000000	         0.36 ns/op
-BenchmarkCountBitsByteAlt-4         	2000000000	         0.36 ns/op
-BenchmarkCountBitsRune-4            	2000000000	         0.37 ns/op
+BenchmarkCountBitsInt8PopCnt-4      	300000000	         4.30 ns/op
+BenchmarkCountBitsInt16PopCnt-4     	300000000	         3.83 ns/op
+BenchmarkCountBitsInt32PopCnt-4     	300000000	         3.64 ns/op
+BenchmarkCountBitsInt64PopCnt-4     	500000000	         3.60 ns/op
+BenchmarkCountBitsIntPopCnt-4       	300000000	         5.72 ns/op
+BenchmarkCountBitsUint8PopCnt-4     	1000000000	         2.98 ns/op
+BenchmarkCountBitsUint16PopCnt-4    	500000000	         3.23 ns/op
+BenchmarkCountBitsUint32PopCnt-4    	500000000	         3.00 ns/op
+BenchmarkCountBitsUint64PopCnt-4    	1000000000	         2.94 ns/op
+BenchmarkCountBitsUintPopCnt-4      	300000000	         5.04 ns/op
+BenchmarkCountBitsBytePopCnt-4      	300000000	         3.99 ns/op
+BenchmarkCountBitsRunePopCnt-4      	300000000	         3.83 ns/op
+BenchmarkCountBitsInt8-4            	2000000000	         0.74 ns/op
+BenchmarkCountBitsInt16-4           	2000000000	         1.54 ns/op
+BenchmarkCountBitsInt32-4           	1000000000	         2.63 ns/op
+BenchmarkCountBitsInt64-4           	1000000000	         2.56 ns/op
+BenchmarkCountBitsInt-4             	200000000	         7.23 ns/op
+BenchmarkCountBitsUint16-4          	2000000000	         1.51 ns/op
+BenchmarkCountBitsUint32-4          	500000000	         4.00 ns/op
+BenchmarkCountBitsUint64-4          	1000000000	         2.64 ns/op
+BenchmarkCountBitsUint64Alt-4       	200000000	         7.60 ns/op
+BenchmarkCountBitsUint-4            	300000000	         5.48 ns/op
+BenchmarkCountBitsUintReference-4   	100000000	        19.2 ns/op
+BenchmarkCountBitsByte-4            	2000000000	         0.75 ns/op
+BenchmarkCountBitsByteAlt-4         	1000000000	         2.37 ns/op
+BenchmarkCountBitsRune-4            	500000000	         2.85 ns/op
 PASS
-ok  	github.com/steakknife/hamming	42.730s
+ok  	_/Users/bmf/Projects/hamming	58.305s
 $
 ```
 
@@ -75,7 +75,7 @@ See help in the [docs](https://godoc.org/github.com/steakknife/hamming)
 
 - [Issues](https://github.com/steakknife/hamming/issues)
 
-## License 
+## License
 
 [MIT license](MIT-LICENSE.txt)
 
