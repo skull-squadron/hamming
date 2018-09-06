@@ -29,10 +29,10 @@ func CountBitsInt64sPopCnt(x []int64) (ret int)
 // CountBitsIntsPopCnt count 1's in x
 func CountBitsIntsPopCnt(x []int) int {
 	if strconv.IntSize == 64 {
-		y := (*[]int64)(unsafe.Pointer(&x))
+		y := (*[]int64)(unsafe.Pointer(&x)) // #nosec G103
 		return CountBitsInt64sPopCnt(*y)
 	} else if strconv.IntSize == 32 {
-		y := (*[]int32)(unsafe.Pointer(&x))
+		y := (*[]int32)(unsafe.Pointer(&x)) // #nosec G103
 		return CountBitsInt32sPopCnt(*y)
 	}
 	panic("strconv.IntSize must be 32 or 64 bits")
@@ -53,10 +53,10 @@ func CountBitsUint64sPopCnt(x []uint64) (ret int)
 // CountBitsUintsPopCnt count 1's in x
 func CountBitsUintsPopCnt(x []uint) int {
 	if strconv.IntSize == 64 {
-		y := (*[]uint64)(unsafe.Pointer(&x))
+		y := (*[]uint64)(unsafe.Pointer(&x)) // #nosec G103
 		return CountBitsUint64sPopCnt(*y)
 	} else if strconv.IntSize == 32 {
-		y := (*[]uint32)(unsafe.Pointer(&x))
+		y := (*[]uint32)(unsafe.Pointer(&x)) // #nosec G103
 		return CountBitsUint32sPopCnt(*y)
 	}
 	panic("strconv.IntSize must be 32 or 64 bits")
