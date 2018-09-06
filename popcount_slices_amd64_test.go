@@ -213,13 +213,13 @@ func TestCountBitsRunesPopCnt(t *testing.T) {
 }
 
 func TestCountBitsStringPopCnt(t *testing.T) {
-	for i, c := range testSliceCases {
+	for _, c := range testSliceCases {
 
 		bHdr := *(*reflect.SliceHeader)(unsafe.Pointer(&c.b))
 		b := *(*string)(unsafe.Pointer(&reflect.StringHeader{Data: bHdr.Data, Len: bHdr.Len * 64 / 8}))
 
 		if actualN := CountBitsStringPopCnt(b); actualN != c.n {
-			t.Errorf("(%v) -> %d != %d", i, []byte(b), actualN, c.n)
+			t.Errorf("(%v) -> %d != %d", []byte(b), actualN, c.n)
 		}
 	}
 }

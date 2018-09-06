@@ -229,7 +229,7 @@ func TestRunes(t *testing.T) {
 }
 
 func TestStrings(t *testing.T) {
-	for i, c := range testArrayCases {
+	for _, c := range testArrayCases {
 
 		b0Hdr := *(*reflect.SliceHeader)(unsafe.Pointer(&c.b0))
 		b0 := *(*string)(unsafe.Pointer(&reflect.StringHeader{Data: b0Hdr.Data, Len: b0Hdr.Len * 64 / 8}))
@@ -238,7 +238,7 @@ func TestStrings(t *testing.T) {
 		b1 := *(*string)(unsafe.Pointer(&reflect.StringHeader{Data: b1Hdr.Data, Len: b1Hdr.Len * 64 / 8}))
 
 		if actualN := Strings(b0, b1); actualN != c.n {
-			t.Errorf("(%v,%v) -> %d != %d", i, []byte(b0), []byte(b1), actualN, c.n)
+			t.Errorf("(%v,%v) -> %d != %d", []byte(b0), []byte(b1), actualN, c.n)
 		}
 	}
 }
