@@ -11,4 +11,4 @@ before_script:
   - "gometalinter.v2 --install"
 script:
   - "go test -v -cover -benchmem -bench=. $(go list ./... | grep -v /vendor/ | sed \"s&_${PWD}&.&\")"
-  - "gometalinter.v2 --enable-all ./..."
+  - "gometalinter.v2 --enable-all --exclude=dupl ./..."
